@@ -37,22 +37,34 @@ class Student extends Person {
     }
   
   listsSubjects() {
-      favSubjects.forEach(function(subject) {
-      console.log(subject);
-      });
+      for (let i = 0; i < this.favSubjects.length; i++) {
+        console.log(this.favSubjects[i]);
+      }
     }
     
   PRAssignment(subject) {
-      return `${student.name} has submitted a PR for ${subject}`;
+      return `${this.name} has submitted a PR for ${subject}`;
     }   
   
   sprintChallenge(subject) {
-    return `${student.name} has begun sprint challenge on ${subject}`;
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+}
+
+class ProjectManager extends Instructor {
+  constructor(name,age,location,gender,specialty,favLanguage,catchPhrase,gradClassName,favInstructor) {
+    super(name,age,location,gender,specialty,favLanguage,catchPhrase);
+    this.gradClassName = gradClassName;
+    this.favInstructor = favInstructor;
+  }
+  
+  standup(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  
+  debugsCode(student,subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}'`;
   }
 }
 
 
-
-const josh = new Person("Josh",26,"Dallas","m");
-const tom = new Instructor("Tom",34,"New York","m","geek","js","blarg");
-console.log(tom.grade(josh, "ruby"));
