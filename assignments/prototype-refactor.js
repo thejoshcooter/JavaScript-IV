@@ -1,13 +1,50 @@
-/* 
-
-Prototype Refactor
-
-1. Copy and paste your code or the solution from yesterday
-
-2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
-
+/*
+  Object oriented design is commonly used in video games.  For this part of the assignment you will be implementing several constructor functions with their correct inheritance hierarchy.
+  In this file you will be creating three constructor functions: GameObject, CharacterStats, Humanoid.  
+  At the bottom of this file are 3 objects that all end up inheriting from Humanoid.  Use the objects at the bottom of the page to test your constructor functions.
+  
+  Each constructor function has unique properties and methods that are defined in their block comments below:
 */
 
+// REFACTOR CODE TO CLASSES
+
+class GameObject {
+    constructor(gameProps) {
+        this.createdAt = gameProps.createdAt;
+        this.dimensions = gameProps.dimensions;
+    };
+    
+    destroy() {
+        return `${this.name} was removed from the game`;
+    };
+}
+
+class CharacterStats extends GameObject {
+    constructor(charStats) {
+        super(charStats);
+        this.hp = charStats.hp;
+        this.name = charStats.name;
+        this.healthPoints = charStats.healthPoints;
+    };
+    
+    takeDamage() {
+        return `${this.name} took damage`;
+    };
+}
+
+class Humanoid extends CharacterStats {
+    constructor(humStats) {
+        super(humStats);
+        this.team = humStats.team;
+        this.weapons = humStats.weapons;
+        this.language = humStats.language;
+    };
+    
+    greet() {
+        return `${this.name} offers a greeting in ${this.language}`;
+    }
+} 
+  
 /*
   === GameObject ===
   * createdAt
@@ -16,24 +53,11 @@ Prototype Refactor
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
-// new class
-
-class GameObject {
-    constructor(gameProperties) {
-        this.createdAt = gameProperties.createdAt;
-        this.dimensions = gameProperties.dimensions;
-    };
-    
-    destroy() {
-        return `${this.name} was removed from the game`;
-    };
-}
-
 // function GameObject(gameProperties) {
 //  this.createdAt = gameProperties.createdAt;
 //  this.dimensions = gameProperties.dimensions;
 //}
-
+//
 // GameObject.prototype.destroy = function() {
 //  return `${this.name} was removed from the game`;
 //};
@@ -45,28 +69,13 @@ class GameObject {
   * should inherit destroy() from GameObject's prototype
 */
 
-// new child class
-
-class CharacterStats extends GameObject {
-    constructor(gameProperties, attributes) {
-        super(gameProperties);
-        this.hp = attributes.hp;
-        this.name = attributes.name;
-        this.healthPoints = attributes.healthPoints;  
-    };
-    
-    takeDamage() {
-    return `${this.name} took damage`;
-    }
-}
-
 //function CharacterStats(attributes) {
 //    GameObject.call(this, attributes);
 //    this.hp = attributes.hp;
 //    this.name = attributes.name;
 //    this.healthPoints = attributes.healthPoints;
 //}
-
+//
 //CharacterStats.prototype = Object.create(GameObject.prototype);
 //
 //CharacterStats.prototype.takeDamage = function () {
@@ -83,28 +92,13 @@ class CharacterStats extends GameObject {
   * should inherit takeDamage() from CharacterStats
 */
 
-// new child class
-
-class Humanoid extends GameObject {
-    constructor(gameProperties, attributes) {
-        super(gameProperties);
-        this.team = attributes.team;
-        this.weapons = attributes.weapons;
-        this.language = attributes.language;
-    };
-    
-    greet() {
-        return `${this.name} offers a greeting in ${this.language}`
-    };
-}
-
 //function Humanoid(attributes) {
 //    CharacterStats.call(this, attributes);
 //    this.team = attributes.team;
 //    this.weapons = attributes.weapons;
 //    this.language = attributes.language;
 //}
-
+//
 //Humanoid.prototype = Object.create(CharacterStats.prototype);
 //
 //Humanoid.prototype.greet = function () {
@@ -180,3 +174,4 @@ class Humanoid extends GameObject {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
