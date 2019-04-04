@@ -1,9 +1,9 @@
 class Person {
-  constructor(name,age,location,gender) {
-    this.name = name;
-    this.age = age;
-    this.location = location;
-    this.gender = gender;
+  constructor(personAttr) {
+    this.name = personAttr.name;
+    this.age = personAttr.age;
+    this.location = personAttr.location;
+    this.gender = personAttr.gender;
   }
   
   speak() {
@@ -12,11 +12,11 @@ class Person {
 }
 
 class Instructor extends Person {
-  constructor(name,age,location,gender,specialty,favLanguage,catchPhrase) {
-    super(name,age,location,gender);
-    this.specialty = specialty;
-    this.favLanguage = favLanguage;
-    this.catchPhrase = catchPhrase;
+  constructor(instructorAttr) {
+    super(instructorAttr);
+    this.specialty = instructorAttr.specialty;
+    this.favLanguage = instructorAttr.favLanguage;
+    this.catchPhrase = instructorAttr.catchPhrase;
   }
   
   demo(subject) {
@@ -29,11 +29,11 @@ class Instructor extends Person {
 }
 
 class Student extends Person {
-  constructor(name,age,location,gender,previousBackground,className,favSubjects) {
-    super(name,age,location,gender);
-    this.previousBackground = previousBackground;
-    this.className = className;
-    this.favSubjects = favSubjects;
+  constructor(studentAttr) {
+    super(studentAttr);
+    this.previousBackground = studentAttr.previousBackground;
+    this.className = studentAttr.className;
+    this.favSubjects = studentAttr.favSubjects;
     }
   
   listsSubjects() {
@@ -52,10 +52,10 @@ class Student extends Person {
 }
 
 class ProjectManager extends Instructor {
-  constructor(name,age,location,gender,specialty,favLanguage,catchPhrase,gradClassName,favInstructor) {
-    super(name,age,location,gender,specialty,favLanguage,catchPhrase);
-    this.gradClassName = gradClassName;
-    this.favInstructor = favInstructor;
+  constructor(pmAttr) {
+    super(pmAttr);
+    this.gradClassName = pmAttr.gradClassName;
+    this.favInstructor = pmAttr.favInstructor;
   }
   
   standup(channel) {
@@ -66,5 +66,3 @@ class ProjectManager extends Instructor {
     return `${this.name} debugs ${student.name}'s code on ${subject}'`;
   }
 }
-
-
