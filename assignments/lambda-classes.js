@@ -1,5 +1,3 @@
-// CODE here for your Lambda Classes
-
 class Person {
   constructor(name,age,location,gender) {
     this.name = name;
@@ -36,5 +34,25 @@ class Student extends Person {
     this.previousBackground = previousBackground;
     this.className = className;
     this.favSubjects = favSubjects;
+    }
+  
+  listsSubjects() {
+      favSubjects.forEach(function(subject) {
+      console.log(subject);
+      });
+    }
+    
+  PRAssignment(subject) {
+      return `${student.name} has submitted a PR for ${subject}`;
+    }   
+  
+  sprintChallenge(subject) {
+    return `${student.name} has begun sprint challenge on ${subject}`;
   }
 }
+
+
+
+const josh = new Person("Josh",26,"Dallas","m");
+const tom = new Instructor("Tom",34,"New York","m","geek","js","blarg");
+console.log(tom.grade(josh, "ruby"));
